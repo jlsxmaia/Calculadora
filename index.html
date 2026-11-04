@@ -119,6 +119,8 @@ kbd { font: 600 13.5px var(--ui); padding: 1px 6px; border-radius: 4px; backgrou
 kbd.nb { background: transparent; padding: 1px 1px; font-family: var(--num); font-weight: 400; font-size: 13px; }
 .res { font-family: var(--num); font-size: 13.5px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .errs { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 15px; }
+.ig { color: var(--g-lo); font-weight: 600; }
+.note { color: var(--ink-soft); font-size: 14.5px; }
 .errs b { font-family: var(--num); font-weight: 500; }
 
 html{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:#1E3B34;overscroll-behavior:none}
@@ -134,6 +136,7 @@ body{margin:0;font-size:14px;overscroll-behavior:none}
       <button class="tool" id="t-back" type="button" aria-label="Apagar último dígito"><svg viewBox="0 0 24 24"><path d="M9 5h11v14H9l-6-7zM13 10l4 4M17 10l-4 4"/></svg></button>
       <button class="tool" id="t-copy" type="button" aria-label="Copiar valor do visor"><svg viewBox="0 0 24 24"><path d="M9 9h11v11H9zM5 15H4V4h11v1"/></svg></button>
       <button class="tool" id="t-help" type="button" aria-label="Abrir ajuda">?</button>
+      <button class="tool" id="t-about" type="button" aria-label="Sobre a calculadora"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg></button>
     </div>
     <div class="msg" id="msg" role="status"></div>
     <div class="stack">
@@ -199,6 +202,17 @@ body{margin:0;font-size:14px;overscroll-behavior:none}
       <h3>O que não está aqui</h3>
       <p>A programação de teclas (P/R, GTO, SST, BST, R/S, PSE, x≤y, x=0) não foi incluída. Os demais cálculos usam 10 dígitos significativos.</p>
     </div>
+  </div>
+</div>
+
+<div class="help" id="about" hidden>
+  <div class="help-in">
+    <div class="help-head"><h2>Sobre</h2><button class="close" id="about-close" type="button">Fechar</button></div>
+    <p><strong>Calculadora RPN Financeira</strong></p>
+    <p>Desenvolvida por José Luiz Maia para quem faz contas financeiras no dia a dia e prefere a lógica RPN.</p>
+    <p>Os valores digitados ficam só no seu aparelho.</p>
+    <p>Instagram: <a class="ig" href="https://www.instagram.com/jluizmaia/" target="_blank" rel="noopener">@jluizmaia</a></p>
+    <p class="note">Projeto independente, sem vínculo com a HP.</p>
   </div>
 </div>
 
@@ -835,9 +849,11 @@ $('t-copy').addEventListener('click', function () {
 });
 $('t-help').addEventListener('click', function () { $('help').hidden = false; $('help-close').focus(); });
 $('help-close').addEventListener('click', function () { $('help').hidden = true; $('t-help').focus(); });
+$('t-about').addEventListener('click', function () { $('about').hidden = false; $('about-close').focus(); });
+$('about-close').addEventListener('click', function () { $('about').hidden = true; $('t-about').focus(); });
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') { $('help').hidden = true; return; }
-  if (!$('help').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === 'Escape') { $('help').hidden = true; $('about').hidden = true; return; }
+  if (!$('help').hidden || !$('about').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
   var map = { '+': 'add', '-': 'sub', '*': 'mul', '/': 'div', '.': 'dot', ',': 'dot', Enter: 'enter', f: 'f', g: 'g' };
   if (e.key === 'Backspace') { e.preventDefault(); $('t-back').click(); return; }
   if (e.key === 'Enter' && document.activeElement && document.activeElement.classList.contains('tool')) return;
