@@ -96,6 +96,7 @@ body { background: linear-gradient(180deg, var(--ground), var(--ground-lo)); bac
 [data-layer] .key .lf, [data-layer] .key .lg { font-size: 15px; line-height: 1.05; font-weight: 700; justify-self: center; }
 [data-layer] .key.none { opacity: .34; }
 [data-layer="f"] .k-g, [data-layer="g"] .k-f { opacity: .55; }
+@media (max-height: 680px) { .plate { display: none; } }
 @media (max-height: 640px) { .row-t { display: none; } .key .lm { font-size: 18px; } .k-num .lm { font-size: 19px; } }
 @media (prefers-reduced-motion: reduce) { .key:active { transform: none; } }
 
@@ -121,6 +122,10 @@ kbd.nb { background: transparent; padding: 1px 1px; font-family: var(--num); fon
 .errs { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 15px; }
 .ig { color: var(--g-lo); font-weight: 600; }
 .note { color: var(--ink-soft); font-size: 14.5px; }
+.plate { flex: none; display: flex; justify-content: center; }
+.plate img { display: block; height: 30px; width: auto; }
+.about-logo { background: var(--ground); border-radius: 10px; padding: 22px; display: flex; justify-content: center; }
+.about-logo img { display: block; width: 130px; height: auto; }
 .steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
 .errs b { font-family: var(--num); font-weight: 500; }
 
@@ -131,6 +136,7 @@ body{margin:0;font-size:14px;overscroll-behavior:none}
 </head>
 <body>
 <div class="app">
+  <div class="plate"><img src="icons/logo-84.png" alt="Logo de José Luiz Maia" width="42" height="33"></div>
   <section class="lcd" aria-label="Visor">
     <div class="status">
       <div class="inds" id="inds"></div>
@@ -231,6 +237,7 @@ body{margin:0;font-size:14px;overscroll-behavior:none}
 <div class="help" id="about" hidden>
   <div class="help-in">
     <div class="help-head"><h2>Sobre</h2><button class="close" id="about-close" type="button">Fechar</button></div>
+    <div class="about-logo"><img src="icons/logo-320.png" alt="Logo de José Luiz Maia"></div>
     <p><strong>Calculadora RPN Financeira</strong></p>
     <p>Desenvolvida por José Luiz Maia para quem faz contas financeiras no dia a dia e prefere a lógica RPN.</p>
     <p>Os valores digitados ficam só no seu aparelho.</p>

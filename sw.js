@@ -1,5 +1,5 @@
-const CACHE = 'calculadora-v1';
-const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png',
+const CACHE = 'calculadora-v2';
+const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/logo-84.png', 'icons/logo-320.png',
   'fonts/chivo-mono-latin-400-normal.woff2', 'fonts/chivo-mono-latin-500-normal.woff2',
   'fonts/barlow-semi-condensed-latin-500-normal.woff2', 'fonts/barlow-semi-condensed-latin-600-normal.woff2', 'fonts/barlow-semi-condensed-latin-700-normal.woff2'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
