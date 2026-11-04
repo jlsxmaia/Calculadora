@@ -122,7 +122,8 @@ kbd.nb { background: transparent; padding: 1px 1px; font-family: var(--num); fon
 .errs { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 15px; }
 .ig { color: var(--g-lo); font-weight: 600; }
 .note { color: var(--ink-soft); font-size: 14.5px; }
-.plate { flex: none; display: flex; justify-content: center; }
+.plate { flex: none; display: flex; justify-content: center; align-items: center; gap: 9px; }
+.plate span { color: #DCC48E; font-size: 17px; font-weight: 600; letter-spacing: .05em; white-space: nowrap; }
 .plate img { display: block; height: 30px; width: auto; }
 .about-logo { background: var(--ground); border-radius: 10px; padding: 22px; display: flex; justify-content: center; }
 .about-logo img { display: block; width: 130px; height: auto; }
@@ -136,7 +137,7 @@ body{margin:0;font-size:14px;overscroll-behavior:none}
 </head>
 <body>
 <div class="app">
-  <div class="plate"><img src="icons/logo-84.png" alt="Logo de José Luiz Maia" width="42" height="33"></div>
+  <div class="plate"><img src="icons/logo-84.png" alt="Logo de José Luiz Maia" width="42" height="33"><span>José Luiz Maia</span></div>
   <section class="lcd" aria-label="Visor">
     <div class="status">
       <div class="inds" id="inds"></div>
